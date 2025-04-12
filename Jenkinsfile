@@ -3,13 +3,14 @@ pipeline {
   stages {
     stage('Build ') {
       steps {
-        echo 'Hello World'
+        git 'https://github.com/AHmedsalem256/Jenkins_Test_Github.git'
+        bat 'mvn clean compile'
       }
     }
 
     stage('Test_Code') {
       steps {
-        echo 'Testcases Passed'
+        bat 'mvn test'
       }
     }
 
