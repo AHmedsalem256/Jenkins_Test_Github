@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Debug Env') {
+            steps {
+                bat 'echo %PATH%'
+            }
+        }
+        
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/AHmedsalem256/Jenkins_Test_Github.git'
