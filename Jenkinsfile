@@ -1,24 +1,29 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build ') {
-      steps {
-        git(url: 'https://github.com/AHmedsalem256/Jenkins_Test_Github.git', branch: 'main')
-        bat 'mvn clean compile'
-      }
-    }
+    agent any
 
-    stage('Test_Code') {
-      steps {
-        bat 'mvn test'
-      }
-    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/AHmedsalem256/Jenkins_Test_Github.git'
+            }
+        }
 
-    stage('Deploy ') {
-      steps {
-        echo 'Project_Deployed'
-      }
-    }
+        stage('Build') {
+            steps {
+                bat 'mvn clean compile'
+            }
+        }
 
-  }
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+
+        stage('Report') {
+            steps {
+                junit 'test-output/testng-results.xml'
+            }
+        }
+    }
 }
