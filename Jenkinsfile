@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build ') {
       steps {
-        git 'https://github.com/AHmedsalem256/Jenkins_Test_Github.git'
+        git(url: 'https://github.com/AHmedsalem256/Jenkins_Test_Github.git', branch: 'main')
         bat 'mvn clean compile'
       }
     }
