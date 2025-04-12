@@ -3,11 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Debug Env') {
-            steps {
-                bat 'echo %PATH%'
-            }
-        }
         
         stage('Checkout') {
             steps {
